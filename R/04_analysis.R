@@ -9,10 +9,12 @@ source("R/keyword_classifier.R")
 
 LABELS <- c("Blackberry removal", "Pressure washing", "Junk removal & hauling",
             "Yard / outdoor work", "Other")
-COLORS <- c("Keyword rules" = "#2a78d6", "LLM" = "#eb6834", "Hybrid" = "#1baf7a")
+COLORS <- c("Keyword rules" = "#2a78d6", "LLM, prompt v1" = "#eb6834", "LLM, prompt v2" = "#1baf7a",
+            "Hybrid, v1" = "#eda100", "Hybrid, v2" = "#e87ba4")
 
 jobs <- read_csv("data/jobs.csv", show_col_types = FALSE)
 llm  <- read_csv("data/llm_predictions.csv", show_col_types = FALSE)
+llm2 <- read_csv("data/llm_predictions_v2.csv", show_col_types = FALSE)
 
 # Map the LLM's reply onto a label. Exact name first, then a case-insensitive match.
 normalize_label <- function(x) {
@@ -36,15 +38,19 @@ fired_keyword <- function(text, label) {
 
 d <- jobs |>
   inner_join(select(llm, id, llm_raw), by = "id") |>
+  inner_join(select(llm2, id, llm2_raw = llm_raw), by = "id") |>
   mutate(
     keyword = classify_keyword(description),
     llm     = normalize_label(llm_raw),
-    hybrid  = if_else(keyword == "Other", llm, keyword)
+    llm2    = normalize_label(llm2_raw),
+    hybrid  = if_else(keyword == "Other", llm, keyword),
+    hybrid2 = if_else(keyword == "Other", llm2, keyword)
   )
 
 long <- d |>
-  select(id, description, true_label, style, `Keyword rules` = keyword, LLM = llm, Hybrid = hybrid) |>
-  pivot_longer(c(`Keyword rules`, LLM, Hybrid), names_to = "classifier", values_to = "pred") |>
+  select(id, description, true_label, style, `Keyword rules` = keyword,
+         `LLM, prompt v1` = llm, `LLM, prompt v2` = llm2, `Hybrid, v1` = hybrid, `Hybrid, v2` = hybrid2) |>
+  pivot_longer(-c(id, description, true_label, style), names_to = "classifier", values_to = "pred") |>
   mutate(classifier = factor(classifier, levels = names(COLORS)),
          correct = pred == true_label)
 
@@ -103,12 +109,21 @@ llm_errors <- d |>
   filter(llm != true_label) |>
   select(id, description, true_label, llm, llm_raw)
 
+# What the revised prompt changed, on the notes v1 got wrong and the ones it got right.
+v2_change <- d |>
+  mutate(v1_right = llm == true_label, v2_right = llm2 == true_label) |>
+  count(v1_right, v2_right)
+
+llm2_errors <- d |>
+  filter(llm2 != true_label) |>
+  select(id, description, true_label, llm2, llm2_raw)
+
 # ---- Cost and latency -------------------------------------------------------
 reps <- 2000
 t_kw <- system.time(for (i in seq_len(reps)) classify_keyword(d$description))[["elapsed"]]
 kw_us_per_row <- t_kw / (reps * nrow(d)) * 1e6
 
-llm_cost <- llm |>
+cost_summary <- function(x) x |>
   summarise(calls        = n(),
             in_tok_mean  = mean(input_tokens),
             out_tok_mean = mean(output_tokens),
@@ -118,8 +133,12 @@ llm_cost <- llm |>
             api_p90      = quantile(api_ms, .9),
             wall_median  = median(wall_ms),
             wall_p90     = quantile(wall_ms, .9))
+llm_cost  <- cost_summary(llm)
+llm2_cost <- cost_summary(llm2)
 
 hybrid_llm_share <- mean(d$keyword == "Other")
+TWO   <- c("Keyword rules", "LLM, prompt v1")
+THREE <- c("Keyword rules", "LLM, prompt v1", "LLM, prompt v2")
 
 # ---- Charts -----------------------------------------------------------------
 theme_viz <- theme_minimal(base_size = 12) +
@@ -137,7 +156,7 @@ short <- c("Blackberry removal" = "Blackberry", "Pressure washing" = "Pressure w
            "Other" = "Other", "Unparsed" = "Unparsed")
 
 conf <- long |>
-  filter(classifier != "Hybrid") |>
+  filter(classifier %in% THREE) |>
   mutate(classifier = droplevels(classifier)) |>
   count(classifier, true_label, pred) |>
   complete(classifier, true_label = LABELS, pred = LABELS, fill = list(n = 0)) |>
@@ -161,35 +180,35 @@ fig_confusion <- ggplot(conf, aes(pred, true_label, fill = share)) +
   theme(axis.text.x = element_text(angle = 30, hjust = 1), panel.grid = element_blank())
 
 pr_long <- per_class |>
-  filter(classifier != "Hybrid") |>
+  filter(classifier %in% THREE) |>
   pivot_longer(c(precision, recall), names_to = "metric") |>
   mutate(metric = str_to_title(metric), class = factor(short[as.character(class)], levels = rev(short[LABELS])))
 
 fig_pr <- ggplot(pr_long, aes(value, class, color = classifier)) +
-  geom_line(aes(group = class), color = "#c9c8c2", linewidth = .6) +
-  geom_point(size = 3.2) +
+  geom_point(size = 3, position = position_dodge(width = .55)) +
   scale_x_continuous(labels = percent, limits = c(0, 1)) +
-  scale_color_manual(values = COLORS[1:2], name = NULL) +
+  scale_color_manual(values = COLORS[THREE], name = NULL) +
   facet_wrap(~metric) +
   labs(title = "Precision and recall by category", x = NULL, y = NULL) +
   theme_viz
 
 style_acc <- overall |>
+  filter(classifier %in% c(THREE, "Hybrid, v2")) |>
   select(classifier, Canonical = canonical, Variant = variant) |>
   pivot_longer(-classifier, names_to = "style", values_to = "accuracy")
 
 fig_style <- ggplot(style_acc, aes(style, accuracy, fill = classifier)) +
-  geom_col(position = position_dodge(width = .8), width = .7) +
+  geom_col(position = position_dodge(width = .84), width = .76) +
   geom_text(aes(label = percent(floor(accuracy * 100) / 100, accuracy = 1)),
-            position = position_dodge(width = .8), vjust = -.5, size = 3.4, color = "#0b0b0b") +
+            position = position_dodge(width = .84), vjust = -.5, size = 3.2, color = "#0b0b0b") +
   scale_y_continuous(labels = percent, limits = c(0, 1.08), breaks = seq(0, 1, .25)) +
   scale_fill_manual(values = COLORS, name = NULL) +
   labs(title = "Accuracy on canonical vs variant wording",
-       subtitle = "Hybrid = keyword rules first, LLM only when the rules return Other",
+       subtitle = "Hybrid = keyword rules first, LLM (prompt v2) only when the rules return Other",
        x = NULL, y = "Accuracy") +
   theme_viz
 
 save_fig <- function(p, file, w = 9, h = 4.8) ggsave(file, p, width = w, height = h, dpi = 150, bg = "#fcfcfb")
-save_fig(fig_confusion, "figures/confusion.png", h = 5.2)
+save_fig(fig_confusion, "figures/confusion.png", w = 12, h = 5.2)
 save_fig(fig_pr, "figures/precision_recall.png")
-save_fig(fig_style, "figures/accuracy_by_style.png", w = 8, h = 4.6)
+save_fig(fig_style, "figures/accuracy_by_style.png", w = 9.5, h = 4.8)

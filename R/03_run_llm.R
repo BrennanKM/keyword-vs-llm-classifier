@@ -3,6 +3,11 @@
 # data/llm_predictions.csv so the README can be rebuilt without new calls.
 # Rows already in the cache are skipped, so a stopped run picks up where it left off.
 #
+# PROMPT_VERSION picks the system prompt: v1 (category definitions only) or
+# v2 (v1 plus rules for close calls and six examples, written after reading
+# v1's mistakes). v1 results go to data/llm_predictions.csv, v2 to
+# data/llm_predictions_v2.csv.
+#
 # Calls go through the Claude Code CLI in print mode (`claude -p`) with a
 # replacement system prompt and no tools, so each call is a single model turn.
 # Needs a logged-in `claude` on the PATH, or set CLAUDE_BIN to its full path.
@@ -17,28 +22,18 @@ suppressPackageStartupMessages({
 MODEL   <- Sys.getenv("LLM_MODEL", "claude-haiku-5-5")
 BIN     <- Sys.getenv("CLAUDE_BIN", "claude")
 WORKERS <- as.integer(Sys.getenv("LLM_WORKERS", "4"))
-OUT     <- "data/llm_predictions.csv"
+PROMPT  <- Sys.getenv("PROMPT_VERSION", "v1")   # prompts/v1.txt or prompts/v2.txt
+OUT     <- if (PROMPT == "v1") "data/llm_predictions.csv" else paste0("data/llm_predictions_", PROMPT, ".csv")
 
 LABELS <- c("Blackberry removal", "Pressure washing", "Junk removal & hauling",
             "Yard / outdoor work", "Other")
 
-SYSTEM_PROMPT <- paste(
-  "You sort job notes from a small outdoor-services business into one service category.",
-  "Pick the main service the job was billed for.",
-  "Categories:",
-  "Blackberry removal: clearing blackberry or other bramble and invasive berry vines.",
-  "Pressure washing: pressure, power or soft washing of hard surfaces, roofs, siding or fences, including moss and algae cleaning.",
-  "Junk removal & hauling: hauling away junk, debris, furniture or appliances, dump runs and cleanouts.",
-  "Yard / outdoor work: weeding, mulch and bark, mowing, pruning, planting, staining, firewood, stumps, digging and other yard upkeep.",
-  "Other: anything else, including indoor work, small repairs and visits with no work done.",
-  "Reply with the category name exactly as written above and nothing else.",
-  sep = "\n"
-)
+SYSTEM_PROMPT <- paste(readLines(file.path("prompts", paste0(PROMPT, ".txt"))), collapse = "\n")
 
 jobs <- read_csv("data/jobs.csv", show_col_types = FALSE)
 done <- if (file.exists(OUT)) read_csv(OUT, show_col_types = FALSE) else NULL
 todo <- if (is.null(done)) jobs else filter(jobs, !id %in% done$id)
-message(nrow(todo), " rows to classify with ", MODEL, " using ", WORKERS, " workers")
+message(nrow(todo), " rows to classify with ", MODEL, ", prompt ", PROMPT, " using ", WORKERS, " workers")
 
 work_dir <- tempfile("llm-run-")
 dir.create(work_dir)
@@ -65,6 +60,7 @@ classify_one <- function(id, description) {
     llm_raw       = trimws(res$result),
     error         = FALSE,
     model         = MODEL,
+    prompt        = PROMPT,
     input_tokens  = u$input_tokens + u$cache_creation_input_tokens + u$cache_read_input_tokens,
     output_tokens = u$output_tokens,
     cost_usd      = res$total_cost_usd,
