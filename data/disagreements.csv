@@ -1,0 +1,97 @@
+id,description,true_label,keyword,llm,winner
+J005,"Deck staining, two coats",Yard / outdoor work,Pressure washing,Yard / outdoor work,LLM right
+J009,"Cleared blackberries in the backyard, 2 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J012,Cleaned moss off the siding,Pressure washing,Other,Pressure washing,LLM right
+J013,Pulled berry vines near the garden,Blackberry removal,Other,Blackberry removal,LLM right
+J015,bramble clearing in the side yard,Blackberry removal,Yard / outdoor work,Blackberry removal,LLM right
+J020,"Estate cleanout, 5 loads",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J021,Cleared thorny vines in the backyard,Blackberry removal,Yard / outdoor work,Blackberry removal,LLM right
+J024,"Cleared blackberries under the deck, 5 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J026,"Weeding by the driveway, Venmo",Yard / outdoor work,Pressure washing,Yard / outdoor work,LLM right
+J034,"Window washing, inside and out, Venmo",Other,Pressure washing,Other,LLM right
+J035,took a busted treadmill to the transfer station,Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J039,"assembled patio furniture, paid cash",Other,Pressure washing,Other,LLM right
+J040,"Cut back black berries behind the shed, paid cash",Blackberry removal,Other,Yard / outdoor work,Both wrong
+J044,"Hung holiday ligths, quoted on site",Other,Other,Yard / outdoor work,Keyword rules right
+J045,"Cleared blackberries around the pond, 4 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J046,Cleaned moss off the garage floor,Pressure washing,Other,Pressure washing,LLM right
+J047,"Pickup load to recycling, construction scraps",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J048,"cleared blackberries around the pond, 2 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J051,"Cleared blackberries on the slope, 4 loads to the dump, 3 hrs",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J059,"Assembled patio furniture, quoted on site",Other,Pressure washing,Other,LLM right
+J060,"cleared blackberries on the hillside, 2 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J063,"Himalayan blackberry clearing under the deck, 3 hrs",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J064,Took yard debris to the transfer sation,Junk removal & hauling,Yard / outdoor work,Junk removal & hauling,LLM right
+J071,Cleared thorny vines by the creek,Blackberry removal,Other,Yard / outdoor work,Both wrong
+J078,"Cleared blackberries by the driveway, 6 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J081,Trimmed hedges and raked leaves,Yard / outdoor work,Other,Yard / outdoor work,LLM right
+J082,Cleared thorny vines on the slope,Blackberry removal,Other,Yard / outdoor work,Both wrong
+J084,"cleared blackberries along the property line, 2 loads to the dump, venmo",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J090,removed ivy from the fence,Yard / outdoor work,Junk removal & hauling,Yard / outdoor work,LLM right
+J091,Dug a drainage trench along the back fence,Yard / outdoor work,Other,Yard / outdoor work,LLM right
+J098,pw siding,Pressure washing,Other,Pressure washing,LLM right
+J103,bb removal along the property line,Blackberry removal,Other,Blackberry removal,LLM right
+J105,"Took a couch to the transfer station, quoted on site",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J110,weeding by the driveway,Yard / outdoor work,Pressure washing,Yard / outdoor work,LLM right
+J111,"Invasive berry removal on the hillside, dug out root balls",Blackberry removal,Other,Blackberry removal,LLM right
+J115,"Dug out blackberry roots by the creek, hauled the brush",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J116,Blackberry removal under the deck,Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J117,himalayan blackberry clearing in the backyard,Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J118,"Cleared blackberries on the slope, 4 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J120,"Cleared blackberries by the driveway, 4 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J123,"Took a busted treadmill to the transfer station, quoted on site",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J135,planted shrubs in the front beds,Yard / outdoor work,Junk removal & hauling,Yard / outdoor work,LLM right
+J136,"Cleared blackberries along the back fence, 2 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J144,"garage cleanout, 4 truck loads",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J145,Cut back black berries on the hillside,Blackberry removal,Other,Yard / outdoor work,Both wrong
+J148,blackberry removal in the side yard,Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J155,Took two old appliances to the transfer station,Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J156,"planted shrubs in the front beds, venmo",Yard / outdoor work,Junk removal & hauling,Yard / outdoor work,LLM right
+J157,mulched the flower beds,Yard / outdoor work,Junk removal & hauling,Yard / outdoor work,LLM right
+J158,Trimmed hedges and raked leaves,Yard / outdoor work,Other,Yard / outdoor work,LLM right
+J162,"Remoed ivy from the fence, quoted on site",Yard / outdoor work,Other,Yard / outdoor work,LLM right
+J164,Painted the guest bedroom,Other,Junk removal & hauling,Other,LLM right
+J165,"Pickup load to recycling, construction scraps, 3 hrs",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J169,Mowed and edged the lawn,Yard / outdoor work,Other,Yard / outdoor work,LLM right
+J171,Weeding under the deck,Yard / outdoor work,Pressure washing,Yard / outdoor work,LLM right
+J172,"Cleared blackberries on the slope, 3 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J178,Pulled berry vines on the hillside,Blackberry removal,Other,Yard / outdoor work,Both wrong
+J180,Removed ivy from the fence,Yard / outdoor work,Junk removal & hauling,Yard / outdoor work,LLM right
+J181,took a busted treadmill to the transfer station,Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J193,"Cleared blackberries along the property line, 5 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J194,Blackberry removal near the garden,Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J195,"pickup load to recycling, carpet and pad",Junk removal & hauling,Other,Yard / outdoor work,Both wrong
+J196,painted the guest bedroom,Other,Junk removal & hauling,Other,LLM right
+J198,Bramble clearing around the pond,Blackberry removal,Other,Yard / outdoor work,Both wrong
+J201,Blasted algae off the roof,Pressure washing,Other,Pressure washing,LLM right
+J203,Fixed a gate latch,Other,Other,Yard / outdoor work,Keyword rules right
+J207,Blasted algae off the roof,Pressure washing,Other,Pressure washing,LLM right
+J208,"Dug out blackberry roots by the creek, hauled the brush",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J212,"Deck staining, two coats",Yard / outdoor work,Pressure washing,Yard / outdoor work,LLM right
+J216,Pulled berry vines by the driveway,Blackberry removal,Pressure washing,Blackberry removal,LLM right
+J220,"Estate cleanout, 4 loads",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J223,Took construction scraps to the transfer station,Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J224,Pulled berry vines along the back fence,Blackberry removal,Other,Blackberry removal,LLM right
+J237,cleaned moss off the pavers,Pressure washing,Junk removal & hauling,Pressure washing,LLM right
+J240,"Blackberry removal around the pond, paid cash",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J241,Bramble clearing near the garden,Blackberry removal,Other,Blackberry removal,LLM right
+J245,Surface cleaner on the roof,Pressure washing,Other,Pressure washing,LLM right
+J246,Painted the guest bedroom,Other,Junk removal & hauling,Other,LLM right
+J254,PW siding,Pressure washing,Other,Pressure washing,LLM right
+J255,"Pulled berry vines on the hillside, 2 guys",Blackberry removal,Other,Blackberry removal,LLM right
+J256,Trimmed hedges and raked leaves,Yard / outdoor work,Other,Yard / outdoor work,LLM right
+J258,Cut back black berries on the hillside,Blackberry removal,Other,Yard / outdoor work,Both wrong
+J261,"Weed whacking along the driveway, Venmo",Yard / outdoor work,Pressure washing,Yard / outdoor work,LLM right
+J263,BB removal behind the shed,Blackberry removal,Other,Yard / outdoor work,Both wrong
+J264,PW siding,Pressure washing,Other,Pressure washing,LLM right
+J271,Bramble clearing by the creek,Blackberry removal,Other,Blackberry removal,LLM right
+J272,"Cleared blackberries under the deck, 4 loads to the dump",Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J275,himalayan blackberry clearing behind the shed,Blackberry removal,Blackberry removal,Yard / outdoor work,Keyword rules right
+J278,"garage cleanout, 2 truck loads, paid cash",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J279,"Window washing, inside and out",Other,Pressure washing,Other,LLM right
+J281,Cleared thorny vines along the back fence,Blackberry removal,Other,Blackberry removal,LLM right
+J284,"Estate cleanout, 4 loads",Junk removal & hauling,Other,Junk removal & hauling,LLM right
+J289,"bramble clearing around the pond, quoted on site",Blackberry removal,Other,Blackberry removal,LLM right
+J291,Pulled berry vines under the deck,Blackberry removal,Pressure washing,Blackberry removal,LLM right
+J294,pw siding,Pressure washing,Other,Pressure washing,LLM right
+J298,Weed whacking along the driveway,Yard / outdoor work,Pressure washing,Yard / outdoor work,LLM right

@@ -1,0 +1,301 @@
+id,description,true_label,style,has_typo
+J001,"Removed two old appliances from the basement, Venmo",Junk removal & hauling,variant,FALSE
+J002,Removed an old hot tub from the basement,Junk removal & hauling,variant,FALSE
+J003,Installed a window AC unit,Other,variant,FALSE
+J004,"Junk removal, two old appliances, 3 hrs",Junk removal & hauling,canonical,FALSE
+J005,"Deck staining, two coats",Yard / outdoor work,variant,FALSE
+J006,"Chopped and stacked firewood, repeat client",Yard / outdoor work,canonical,FALSE
+J007,"blackberry removal in the backyard, venmo",Blackberry removal,canonical,FALSE
+J008,Blackberry removal around the pond,Blackberry removal,canonical,FALSE
+J009,"Cleared blackberries in the backyard, 2 loads to the dump",Blackberry removal,canonical,FALSE
+J010,Mounted a TV in the living room,Other,variant,FALSE
+J011,"Soft wash on the roof, moss treatment",Pressure washing,variant,FALSE
+J012,Cleaned moss off the siding,Pressure washing,variant,FALSE
+J013,Pulled berry vines near the garden,Blackberry removal,variant,FALSE
+J014,"installed a window ac unit, 2 guys",Other,variant,FALSE
+J015,bramble clearing in the side yard,Blackberry removal,variant,FALSE
+J016,pressure washing pavers,Pressure washing,canonical,FALSE
+J017,power washed the driveway,Pressure washing,canonical,FALSE
+J018,"Pressure washing sidewalk, quoted on site",Pressure washing,canonical,FALSE
+J019,"Yard work, weeding, 2 guys",Yard / outdoor work,canonical,FALSE
+J020,"Estate cleanout, 5 loads",Junk removal & hauling,variant,FALSE
+J021,Cleared thorny vines in the backyard,Blackberry removal,variant,FALSE
+J022,Power washed the pavers,Pressure washing,canonical,FALSE
+J023,Installed a window AC unit,Other,variant,FALSE
+J024,"Cleared blackberries under the deck, 5 loads to the dump",Blackberry removal,canonical,FALSE
+J025,"Yard work, raking, quoted on site",Yard / outdoor work,canonical,FALSE
+J026,"Weeding by the driveway, Venmo",Yard / outdoor work,canonical,FALSE
+J027,"Junk removal, broken pavers",Junk removal & hauling,canonical,FALSE
+J028,"Junk removal, old furniture",Junk removal & hauling,canonical,FALSE
+J029,"Weeding in the side yard, 2 guys",Yard / outdoor work,canonical,FALSE
+J030,Hauled yard debris to the dump,Junk removal & hauling,canonical,FALSE
+J031,Blackberry removal along the property line,Blackberry removal,canonical,FALSE
+J032,Chopped and stacked firewood,Yard / outdoor work,canonical,FALSE
+J033,Himalayan blackberry clearing near the garden,Blackberry removal,canonical,FALSE
+J034,"Window washing, inside and out, Venmo",Other,variant,FALSE
+J035,took a busted treadmill to the transfer station,Junk removal & hauling,variant,FALSE
+J036,pw driveway,Pressure washing,variant,FALSE
+J037,Blackberry removal by the creek,Blackberry removal,canonical,FALSE
+J038,"Dump run, a couch",Junk removal & hauling,canonical,FALSE
+J039,"assembled patio furniture, paid cash",Other,variant,FALSE
+J040,"Cut back black berries behind the shed, paid cash",Blackberry removal,variant,FALSE
+J041,Pressure washing patio and walkway,Pressure washing,canonical,FALSE
+J042,"Cleaned moss off the front walkway, Venmo",Pressure washing,variant,FALSE
+J043,installed a windwo ac unit,Other,variant,TRUE
+J044,"Hung holiday ligths, quoted on site",Other,variant,TRUE
+J045,"Cleared blackberries around the pond, 4 loads to the dump",Blackberry removal,canonical,FALSE
+J046,Cleaned moss off the garage floor,Pressure washing,variant,FALSE
+J047,"Pickup load to recycling, construction scraps",Junk removal & hauling,variant,FALSE
+J048,"cleared blackberries around the pond, 2 loads to the dump",Blackberry removal,canonical,FALSE
+J049,"Quote visit, no work done",Other,canonical,FALSE
+J050,Himalayan blackberry clearing behind the shed,Blackberry removal,canonical,FALSE
+J051,"Cleared blackberries on the slope, 4 loads to the dump, 3 hrs",Blackberry removal,canonical,FALSE
+J052,"junk removal, scrap wood",Junk removal & hauling,canonical,FALSE
+J053,"Quote vist, no work done",Other,variant,TRUE
+J054,"Quote visit, no work done",Other,canonical,FALSE
+J055,Hung holiday lights,Other,canonical,FALSE
+J056,"Yard work, weeding, 2 guys",Yard / outdoor work,canonical,FALSE
+J057,"Junk removal, broken pavers",Junk removal & hauling,canonical,FALSE
+J058,Power washed the back patio,Pressure washing,canonical,FALSE
+J059,"Assembled patio furniture, quoted on site",Other,variant,FALSE
+J060,"cleared blackberries on the hillside, 2 loads to the dump",Blackberry removal,canonical,FALSE
+J061,Hauled scrap wood to the dump,Junk removal & hauling,canonical,FALSE
+J062,Spread 4 yards of bark,Yard / outdoor work,canonical,FALSE
+J063,"Himalayan blackberry clearing under the deck, 3 hrs",Blackberry removal,canonical,FALSE
+J064,Took yard debris to the transfer sation,Junk removal & hauling,variant,TRUE
+J065,"Himalayan blackberry clearing by the creek, quoted on site",Blackberry removal,canonical,FALSE
+J066,"Pickup load to recycling, yard debris",Junk removal & hauling,variant,FALSE
+J067,weeding in the side yard,Yard / outdoor work,canonical,FALSE
+J068,Cohpped and stacked firewood,Yard / outdoor work,variant,TRUE
+J069,"Chpoped and stacked firewood, 2 guys",Yard / outdoor work,variant,TRUE
+J070,hauled boxes from the garage to the dump,Junk removal & hauling,canonical,FALSE
+J071,Cleared thorny vines by the creek,Blackberry removal,variant,FALSE
+J072,"Pickup load to recycling, old furniture",Junk removal & hauling,variant,FALSE
+J073,"pickup load to recycling, yard debris",Junk removal & hauling,variant,FALSE
+J074,"Yard work, weeding",Yard / outdoor work,canonical,FALSE
+J075,"Soft wash on the roof, moss treatment",Pressure washing,variant,FALSE
+J076,"Pressure washing pavers, paid cash",Pressure washing,canonical,FALSE
+J077,cleaned moss off the sidewalk,Pressure washing,variant,FALSE
+J078,"Cleared blackberries by the driveway, 6 loads to the dump",Blackberry removal,canonical,FALSE
+J079,Pressure wash and seal fene,Pressure washing,variant,TRUE
+J080,"Pressure washing back patio, repeat client",Pressure washing,canonical,FALSE
+J081,Trimmed hedges and raked leaves,Yard / outdoor work,variant,FALSE
+J082,Cleared thorny vines on the slope,Blackberry removal,variant,FALSE
+J083,"Junk removal, a busted treadmill",Junk removal & hauling,canonical,FALSE
+J084,"cleared blackberries along the property line, 2 loads to the dump, venmo",Blackberry removal,canonical,FALSE
+J085,Weeding near the garden,Yard / outdoor work,canonical,FALSE
+J086,Weeding along the property line,Yard / outdoor work,canonical,FALSE
+J087,"Removed a mattress and bed frame from the basement, repeat client",Junk removal & hauling,variant,FALSE
+J088,"Junk removal, a couch",Junk removal & hauling,canonical,FALSE
+J089,"Cleared blackberries along the back fence, 5 loads to the dump",Blackberry removal,canonical,FALSE
+J090,removed ivy from the fence,Yard / outdoor work,variant,FALSE
+J091,Dug a drainage trench along the back fence,Yard / outdoor work,variant,FALSE
+J092,"Blackberry removal by the creek, 2 guys",Blackberry removal,canonical,FALSE
+J093,Pressure wahing roof,Pressure washing,variant,TRUE
+J094,Blasted algae off the sidewalk,Pressure washing,variant,FALSE
+J095,"blackberry removal behind the shed, quoted on site",Blackberry removal,canonical,FALSE
+J096,Pressure washing roof,Pressure washing,canonical,FALSE
+J097,"Soft wash on the roof, moss treatment",Pressure washing,variant,FALSE
+J098,pw siding,Pressure washing,variant,FALSE
+J099,PW front walkway,Pressure washing,variant,FALSE
+J100,removed a busted treadmill from the basement,Junk removal & hauling,variant,FALSE
+J101,Weeding by the creek,Yard / outdoor work,canonical,FALSE
+J102,Power washed the stone steps,Pressure washing,canonical,FALSE
+J103,bb removal along the property line,Blackberry removal,variant,FALSE
+J104,Mounted a TV in the living room,Other,variant,FALSE
+J105,"Took a couch to the transfer station, quoted on site",Junk removal & hauling,variant,FALSE
+J106,"Pickup load to recycling, old furniture",Junk removal & hauling,variant,FALSE
+J107,"quote visit, no work done",Other,canonical,FALSE
+J108,cut back black berries in the backyard,Blackberry removal,variant,FALSE
+J109,"Took two old appliances to the transfer station, Venmo",Junk removal & hauling,variant,FALSE
+J110,weeding by the driveway,Yard / outdoor work,canonical,FALSE
+J111,"Invasive berry removal on the hillside, dug out root balls",Blackberry removal,variant,TRUE
+J112,Power washed the deck,Pressure washing,canonical,FALSE
+J113,Blackberry removal behind the shed,Blackberry removal,canonical,FALSE
+J114,Himalayan blackberry clearing along the property line,Blackberry removal,canonical,FALSE
+J115,"Dug out blackberry roots by the creek, hauled the brush",Blackberry removal,variant,FALSE
+J116,Blackberry removal under the deck,Blackberry removal,canonical,FALSE
+J117,himalayan blackberry clearing in the backyard,Blackberry removal,canonical,FALSE
+J118,"Cleared blackberries on the slope, 4 loads to the dump",Blackberry removal,canonical,FALSE
+J119,Removed two old appliances from the basement,Junk removal & hauling,variant,FALSE
+J120,"Cleared blackberries by the driveway, 4 loads to the dump",Blackberry removal,canonical,FALSE
+J121,"Pickup load to recycling, yard debris",Junk removal & hauling,variant,FALSE
+J122,"dump run, an old hot tub",Junk removal & hauling,canonical,FALSE
+J123,"Took a busted treadmill to the transfer station, quoted on site",Junk removal & hauling,variant,FALSE
+J124,"Yard work, mowing",Yard / outdoor work,canonical,FALSE
+J125,"Yard work, general cleanup",Yard / outdoor work,canonical,FALSE
+J126,Chopped and stacked firewood,Yard / outdoor work,canonical,FALSE
+J127,Pressure washing stone steps,Pressure washing,canonical,FALSE
+J128,Chopped and stacked firewood,Yard / outdoor work,canonical,FALSE
+J129,Pressure washing stone steps,Pressure washing,canonical,FALSE
+J130,Blackberry removal by the driveway,Blackberry removal,canonical,FALSE
+J131,"Power washed the patio and walkway, Venmo",Pressure washing,canonical,FALSE
+J132,Blackberry removal on the hillside,Blackberry removal,canonical,FALSE
+J133,Pressure washing patio and walkway,Pressure washing,canonical,FALSE
+J134,Presure washing siding,Pressure washing,variant,FALSE
+J135,planted shrubs in the front beds,Yard / outdoor work,variant,FALSE
+J136,"Cleared blackberries along the back fence, 2 loads to the dump",Blackberry removal,canonical,FALSE
+J137,"Yard work, weeding",Yard / outdoor work,canonical,FALSE
+J138,Spread 2 yards of bark,Yard / outdoor work,canonical,FALSE
+J139,"junk removal, boxes from the garage",Junk removal & hauling,canonical,FALSE
+J140,"Yard work, raking",Yard / outdoor work,canonical,FALSE
+J141,power washed the fence,Pressure washing,canonical,FALSE
+J142,pressure washing sidewalk,Pressure washing,canonical,FALSE
+J143,"Soft wash on the roof, moss treatment",Pressure washing,variant,FALSE
+J144,"garage cleanout, 4 truck loads",Junk removal & hauling,variant,FALSE
+J145,Cut back black berries on the hillside,Blackberry removal,variant,FALSE
+J146,weeding along the property line,Yard / outdoor work,canonical,FALSE
+J147,"quote visit, no work done",Other,canonical,FALSE
+J148,blackberry removal in the side yard,Blackberry removal,canonical,FALSE
+J149,"Hauled two old appliances to the dump, quoted on site",Junk removal & hauling,canonical,FALSE
+J150,Power washed the fence,Pressure washing,canonical,FALSE
+J151,Power washed the driveway,Pressure washing,canonical,FALSE
+J152,"yard work, raking",Yard / outdoor work,canonical,FALSE
+J153,"Cleared blackberries in the side yard, 3 loads to the dump, quoted on site",Blackberry removal,canonical,FALSE
+J154,cleaned moss off the sidewalk,Pressure washing,variant,FALSE
+J155,Took two old appliances to the transfer station,Junk removal & hauling,variant,FALSE
+J156,"planted shrubs in the front beds, venmo",Yard / outdoor work,variant,FALSE
+J157,mulched the flower beds,Yard / outdoor work,variant,FALSE
+J158,Trimmed hedges and raked leaves,Yard / outdoor work,variant,FALSE
+J159,Blackberry removal by the creek,Blackberry removal,canonical,FALSE
+J160,Power washed the siding,Pressure washing,canonical,FALSE
+J161,Pressure washing roof,Pressure washing,canonical,FALSE
+J162,"Remoed ivy from the fence, quoted on site",Yard / outdoor work,variant,TRUE
+J163,"Chopped and stacked firewood, 2 guys",Yard / outdoor work,canonical,FALSE
+J164,Painted the guest bedroom,Other,variant,FALSE
+J165,"Pickup load to recycling, construction scraps, 3 hrs",Junk removal & hauling,variant,FALSE
+J166,himalayan blackberry clearing near the garden,Blackberry removal,canonical,FALSE
+J167,"Yard work, hedge trimming",Yard / outdoor work,canonical,FALSE
+J168,removed an old hot tub from the basement,Junk removal & hauling,variant,FALSE
+J169,Mowed and edged the lawn,Yard / outdoor work,variant,FALSE
+J170,spread 4 yards of bark,Yard / outdoor work,canonical,FALSE
+J171,Weeding under the deck,Yard / outdoor work,canonical,FALSE
+J172,"Cleared blackberries on the slope, 3 loads to the dump",Blackberry removal,canonical,FALSE
+J173,Took scrap wood to the transfer station,Junk removal & hauling,variant,FALSE
+J174,Pressure washing patio and walkway,Pressure washing,canonical,FALSE
+J175,"Yard work, spreading bark, quoted on site",Yard / outdoor work,canonical,FALSE
+J176,"Junk removal, a mattress and bed frame",Junk removal & hauling,canonical,FALSE
+J177,"soft wash on the roof, moss treatment, quoted on site",Pressure washing,variant,FALSE
+J178,Pulled berry vines on the hillside,Blackberry removal,variant,FALSE
+J179,"Blackberry removal by the creek, 3 hrs",Blackberry removal,canonical,FALSE
+J180,Removed ivy from the fence,Yard / outdoor work,variant,FALSE
+J181,took a busted treadmill to the transfer station,Junk removal & hauling,variant,FALSE
+J182,"Soft wash on the roof, moss treatment",Pressure washing,variant,FALSE
+J183,"Dump run, yard debris",Junk removal & hauling,canonical,FALSE
+J184,"pressure washing sidewalk, paid cash",Pressure washing,canonical,FALSE
+J185,Clened moss off the deck,Pressure washing,variant,TRUE
+J186,Took yard debris to the transfer station,Junk removal & hauling,variant,FALSE
+J187,"cleared blackberries near the garden, 4 loads to the dump, 2 guys",Blackberry removal,canonical,FALSE
+J188,Stained the fence,Yard / outdoor work,canonical,FALSE
+J189,"junk remval, yard debris",Junk removal & hauling,variant,TRUE
+J190,blackberry removal on the slope,Blackberry removal,canonical,FALSE
+J191,Removed boes from the garage from the basement,Junk removal & hauling,variant,TRUE
+J192,"surface cleaner on the front walkway, venmo",Pressure washing,variant,FALSE
+J193,"Cleared blackberries along the property line, 5 loads to the dump",Blackberry removal,canonical,FALSE
+J194,Blackberry removal near the garden,Blackberry removal,canonical,FALSE
+J195,"pickup load to recycling, carpet and pad",Junk removal & hauling,variant,FALSE
+J196,painted the guest bedroom,Other,variant,FALSE
+J197,"junk removal, boxes from the garage, 3 hrs",Junk removal & hauling,canonical,FALSE
+J198,Bramble clearing around the pond,Blackberry removal,variant,FALSE
+J199,"Yard work, weeding",Yard / outdoor work,canonical,FALSE
+J200,blackberry removal in the backyard,Blackberry removal,canonical,FALSE
+J201,Blasted algae off the roof,Pressure washing,variant,FALSE
+J202,"Dug out blackberry roots by the creek, hauled the brush, 2 guys",Blackberry removal,variant,FALSE
+J203,Fixed a gate latch,Other,canonical,FALSE
+J204,"Chopped and stacked firewood, 2 guys",Yard / outdoor work,canonical,FALSE
+J205,Took yard debris to the transfer station,Junk removal & hauling,variant,FALSE
+J206,power washed the siding,Pressure washing,canonical,FALSE
+J207,Blasted algae off the roof,Pressure washing,variant,FALSE
+J208,"Dug out blackberry roots by the creek, hauled the brush",Blackberry removal,variant,FALSE
+J209,"Quote visit, no work done",Other,canonical,FALSE
+J210,PW driveway,Pressure washing,variant,FALSE
+J211,Hung holiday lights,Other,canonical,FALSE
+J212,"Deck staining, two coats",Yard / outdoor work,variant,FALSE
+J213,Pressure washing pavers,Pressure washing,canonical,FALSE
+J214,pressure washing deck,Pressure washing,canonical,FALSE
+J215,spread 2 yards of bark,Yard / outdoor work,canonical,FALSE
+J216,Pulled berry vines by the driveway,Blackberry removal,variant,FALSE
+J217,Hauled scrap wood to the dump,Junk removal & hauling,canonical,FALSE
+J218,pressure washing roof,Pressure washing,canonical,FALSE
+J219,himalayan blackberry clearing under the deck,Blackberry removal,canonical,FALSE
+J220,"Estate cleanout, 4 loads",Junk removal & hauling,variant,FALSE
+J221,blackberry removal on the hillside,Blackberry removal,canonical,FALSE
+J222,pressure washing fence,Pressure washing,canonical,FALSE
+J223,Took construction scraps to the transfer station,Junk removal & hauling,variant,FALSE
+J224,Pulled berry vines along the back fence,Blackberry removal,variant,FALSE
+J225,Pressure washing siding,Pressure washing,canonical,FALSE
+J226,"Junk removal, yard debris",Junk removal & hauling,canonical,FALSE
+J227,Pressure washing sidewalk,Pressure washing,canonical,FALSE
+J228,"Dump run, yard debris",Junk removal & hauling,canonical,FALSE
+J229,Power washed the back patio,Pressure washing,canonical,FALSE
+J230,"Yard work, mowing",Yard / outdoor work,canonical,FALSE
+J231,spread 5 yards of bark,Yard / outdoor work,canonical,FALSE
+J232,"Pressure washing driveway, repeat client",Pressure washing,canonical,FALSE
+J233,power washed the pavers,Pressure washing,canonical,FALSE
+J234,hauled a busted treadmill to the dump,Junk removal & hauling,canonical,FALSE
+J235,"presure washing driveway, repeat client",Pressure washing,variant,FALSE
+J236,Cleaned moss off the driveway,Pressure washing,variant,FALSE
+J237,cleaned moss off the pavers,Pressure washing,variant,FALSE
+J238,"quote visit, no work done",Other,canonical,FALSE
+J239,"Yard work, hedge trimming, quoted on site",Yard / outdoor work,canonical,FALSE
+J240,"Blackberry removal around the pond, paid cash",Blackberry removal,canonical,FALSE
+J241,Bramble clearing near the garden,Blackberry removal,variant,FALSE
+J242,"Yard work, hedge trimming",Yard / outdoor work,canonical,FALSE
+J243,"Power washed the fence, 3 hrs",Pressure washing,canonical,FALSE
+J244,Power washed the front walkway,Pressure washing,canonical,FALSE
+J245,Surface cleaner on the roof,Pressure washing,variant,FALSE
+J246,Painted the guest bedroom,Other,variant,FALSE
+J247,Hualed scrap wood to the dump,Junk removal & hauling,variant,TRUE
+J248,"junk removal, broken pavers",Junk removal & hauling,canonical,FALSE
+J249,Weeding near the garden,Yard / outdoor work,canonical,FALSE
+J250,"junk removal, carpet and pad",Junk removal & hauling,canonical,FALSE
+J251,"power washed the back patio, quoted on site",Pressure washing,canonical,FALSE
+J252,"Quote viist, no work done",Other,variant,TRUE
+J253,"dump run, scrap wood",Junk removal & hauling,canonical,FALSE
+J254,PW siding,Pressure washing,variant,FALSE
+J255,"Pulled berry vines on the hillside, 2 guys",Blackberry removal,variant,FALSE
+J256,Trimmed hedges and raked leaves,Yard / outdoor work,variant,FALSE
+J257,cleaned moss off the deck,Pressure washing,variant,FALSE
+J258,Cut back black berries on the hillside,Blackberry removal,variant,FALSE
+J259,"yard work, raking",Yard / outdoor work,canonical,FALSE
+J260,"Mounted a TV in the living room, quoted on site",Other,variant,FALSE
+J261,"Weed whacking along the driveway, Venmo",Yard / outdoor work,variant,FALSE
+J262,"Pickup load to recycling, broken pavers",Junk removal & hauling,variant,FALSE
+J263,BB removal behind the shed,Blackberry removal,variant,FALSE
+J264,PW siding,Pressure washing,variant,FALSE
+J265,Installed a window AC unit,Other,variant,FALSE
+J266,Pressure washing fence,Pressure washing,canonical,FALSE
+J267,Blackberry removal near the garden,Blackberry removal,canonical,FALSE
+J268,Power washed the stone steps,Pressure washing,canonical,FALSE
+J269,weeding along the property line,Yard / outdoor work,canonical,FALSE
+J270,Stained the fence,Yard / outdoor work,canonical,FALSE
+J271,Bramble clearing by the creek,Blackberry removal,variant,FALSE
+J272,"Cleared blackberries under the deck, 4 loads to the dump",Blackberry removal,canonical,FALSE
+J273,"Dug out blackberry roots by the creek, hauled the brush, repeat client",Blackberry removal,variant,FALSE
+J274,"weeding in the backyrad, 2 guys",Yard / outdoor work,variant,TRUE
+J275,himalayan blackberry clearing behind the shed,Blackberry removal,canonical,FALSE
+J276,installed a window ac unit,Other,variant,FALSE
+J277,Blackberry removal in the backyard,Blackberry removal,canonical,FALSE
+J278,"garage cleanout, 2 truck loads, paid cash",Junk removal & hauling,variant,FALSE
+J279,"Window washing, inside and out",Other,variant,FALSE
+J280,spread 4 yards of bark,Yard / outdoor work,canonical,FALSE
+J281,Cleared thorny vines along the back fence,Blackberry removal,variant,FALSE
+J282,Pressure washing fence,Pressure washing,canonical,FALSE
+J283,"Quote visit, no work done",Other,canonical,FALSE
+J284,"Estate cleanout, 4 loads",Junk removal & hauling,variant,FALSE
+J285,Spread 6 yarsd of bark,Yard / outdoor work,variant,TRUE
+J286,Blackberry removal along the back fence,Blackberry removal,canonical,FALSE
+J287,"junk removal, broken pavers",Junk removal & hauling,canonical,FALSE
+J288,"Pressure washing back patio, repeat client",Pressure washing,canonical,FALSE
+J289,"bramble clearing around the pond, quoted on site",Blackberry removal,variant,FALSE
+J290,Blasted algae off the deck,Pressure washing,variant,FALSE
+J291,Pulled berry vines under the deck,Blackberry removal,variant,FALSE
+J292,"Haulde old furniture to the dump, Venmo",Junk removal & hauling,variant,TRUE
+J293,"pressure washing driveway, quoted on site",Pressure washing,canonical,FALSE
+J294,pw siding,Pressure washing,variant,FALSE
+J295,"Pressure washing sidewalk, quoted on site",Pressure washing,canonical,FALSE
+J296,"blackberry removal along the property line, repeat client",Blackberry removal,canonical,FALSE
+J297,Blackberry removal around the pond,Blackberry removal,canonical,FALSE
+J298,Weed whacking along the driveway,Yard / outdoor work,variant,FALSE
+J299,Power washed the deck,Pressure washing,canonical,FALSE
+J300,"Window washing, inside and out",Other,variant,FALSE

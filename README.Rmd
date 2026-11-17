@@ -1,0 +1,171 @@
+<!-- README.md is generated from README.Rmd. Edit the .Rmd, then run: Rscript -e 'knitr::knit("README.Rmd")' -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+source("R/04_analysis.R")
+pct  <- function(x) paste0(floor(x * 100), "%")
+o    <- function(clf, col) overall[[col]][overall$classifier == clf]
+kw_err  <- sum(keyword_errors$errors)
+kw_none <- sum(keyword_errors$errors[keyword_errors$fired == "(nothing matched)"])
+bb_n      <- sum(d$true_label == "Blackberry removal")
+bb_yard   <- sum(d$true_label == "Blackberry removal" & d$llm == "Yard / outdoor work")
+bb_canon  <- sum(d$true_label == "Blackberry removal" & d$style == "canonical")
+bb_canon_miss <- sum(d$true_label == "Blackberry removal" & d$style == "canonical" & d$llm != "Blackberry removal")
+api_s  <- function(x) floor(x / 100) / 10
+tally <- function(w) { v <- disagree_tally$n[disagree_tally$winner == w]; if (length(v)) v else 0L }
+```
+
+# Keyword rules vs an LLM: classifying field-service job notes in R
+
+My [field-service app](https://github.com/BrennanKM/field-service-client-directory) sorts free-text job notes ("cleared blackberries behind the shed, 3 loads to the dump") into five service categories so its Stats view can report revenue and $/hour by service line. It does that with a short list of keyword rules. Jobs get their service from a picker (Blackberry removal, Pressure washing, Junk removal, Dump run, Yard work, Other) or a free-text box. This project asks whether an LLM does the job better, what it gets wrong, and what it costs per job.
+
+**Short answer:** on `r nrow(d)` synthetic job notes, the keyword rules got **`r pct(o("Keyword rules", "accuracy"))`** right and the LLM (`r unique(llm$model)`) got **`r pct(o("LLM", "accuracy"))`**. The rules are near-perfect on wording like the picker's (`r pct(o("Keyword rules", "canonical"))`) and fall apart on shorthand, synonyms and typos (`r pct(o("Keyword rules", "variant"))`). The LLM handles that variation much better, but it has a blind spot of its own: it filed `r bb_yard` of `r bb_n` blackberry jobs as general yard work, including notes that say "Blackberry removal" word for word. A **hybrid** that uses the rules first and calls the LLM only when the rules give up scored **`r pct(o("Hybrid", "accuracy"))`** while calling the LLM on `r pct(hybrid_llm_share)` of notes.
+
+The LLM costs about $`r sprintf("%.2f", floor(llm_cost$cost_per_1k * 100) / 100)` per 1,000 notes and about `r api_s(llm_cost$api_median)` seconds of model time per note; the rules are free and take about `r floor(kw_us_per_row * 10) / 10` microseconds.
+
+## Data
+
+All `r nrow(d)` job notes are **synthetic**. No real client, address, phone number or job record is in this repo. `R/01_make_data.R` writes them from templates with a fixed seed, and each template carries its true category. [LABELING.md](LABELING.md) has the labeling rule and category definitions.
+
+```{r data-table}
+d |>
+  count(true_label, style) |>
+  pivot_wider(names_from = style, values_from = n, values_fill = 0) |>
+  mutate(total = canonical + variant) |>
+  rename(`True category` = true_label, Canonical = canonical, Variant = variant, Total = total) |>
+  knitr::kable()
+```
+
+*Canonical* notes start from a picker name ("Pressure washing driveway", "Dump run, a couch"). *Variant* notes use shorthand, synonyms, combined jobs or a typo.
+
+## Method
+
+| | Keyword rules | LLM |
+|---|---|---|
+| What it is | `classifyService()` from the app, ported to R in [`R/keyword_classifier.R`](R/keyword_classifier.R). First matching regex wins. | `r unique(llm$model)`, one call per note, via the Claude Code CLI in print mode with no tools ([`R/03_run_llm.R`](R/03_run_llm.R)). |
+| Input | The note | The note, plus a system prompt with the five category definitions |
+| Check | [`R/02_check_port.R`](R/02_check_port.R) runs the original JavaScript on every note; the R port matches it on all `r nrow(d)`. | Replies are matched to a category name; `r sum(d$llm == "Unparsed")` of `r nrow(d)` didn't match. |
+
+A third column, **Hybrid**, is computed from the same predictions with no extra calls: use the keyword rules, and only call the LLM when the rules return `Other`.
+
+## Results
+
+```{r overall-table}
+overall |>
+  transmute(Classifier = classifier,
+            Accuracy = pct(accuracy),
+            `Macro F1` = sprintf("%.2f", floor(macro_f1 * 100) / 100),
+            `Canonical notes` = pct(canonical),
+            `Variant notes` = pct(variant)) |>
+  knitr::kable(align = "lrrrr")
+```
+
+The Hybrid sends `r pct(hybrid_llm_share)` of notes to the LLM.
+
+![Accuracy by wording style](figures/accuracy_by_style.png)
+
+### Confusion matrices
+
+![Confusion matrices](figures/confusion.png)
+
+### Precision and recall by category
+
+```{r pr-table}
+per_class |>
+  filter(classifier != "Hybrid") |>
+  transmute(classifier, Category = class,
+            P = if_else(is.na(precision), "n/a", pct(precision)),
+            R = pct(recall)) |>
+  pivot_wider(names_from = classifier, values_from = c(P, R)) |>
+  select(Category,
+         `Keyword precision` = `P_Keyword rules`, `Keyword recall` = `R_Keyword rules`,
+         `LLM precision` = P_LLM, `LLM recall` = R_LLM) |>
+  knitr::kable(align = "lrrrr")
+```
+
+![Precision and recall](figures/precision_recall.png)
+
+## Where they disagree
+
+The two classifiers gave different answers on `r nrow(disagree)` of `r nrow(d)` notes. The LLM was right on `r tally("LLM right")` of them, the keyword rules on `r tally("Keyword rules right")`, and both were wrong on `r tally("Both wrong")`.
+
+**Why the keyword rules miss.** Each row below is one keyword that sent notes to the wrong category, with one example note.
+
+```{r kw-errors}
+keyword_error_examples |>
+  transmute(`Keyword that fired` = paste0("`", fired, "`"),
+            Errors = errors,
+            `Example note` = description,
+            `True` = true_label,
+            `Rules said` = keyword) |>
+  knitr::kable()
+```
+
+Two kinds of miss. `r kw_none` of the rules' `r kw_err` misses are notes no rule matched ("bramble", "berry vines", "PW", "moss"), so they fall to `Other`. The other `r kw_err - kw_none` are a rule firing on the wrong word: place words like `yard`, `driveway`, `deck` and `patio` describe where the job was, not what was done, and plain substrings catch too much (`move` inside "removed", `bed` inside "flower beds" and "bedroom", `wash` in window washing). Because the rules run in order, a place word in an early rule wins over the real service in a later one.
+
+**Where the LLM misses.** Grouped by the mistake, with one example note each.
+
+```{r llm-errors}
+llm_errors |>
+  group_by(true_label, llm) |>
+  summarise(Errors = n(), `Example note` = first(description), .groups = "drop") |>
+  arrange(desc(Errors)) |>
+  transmute(`True` = true_label, `LLM said` = llm, Errors, `Example note`) |>
+  knitr::kable()
+```
+
+The big one is blackberry work filed as yard work: `r bb_yard` of `r bb_n` blackberry jobs, and `r bb_canon_miss` of the `r bb_canon` that use the plain picker wording. The system prompt defines Blackberry removal as its own category, and the model still folded it into the broader one. It also tends to read "yard debris" as yard work when the job was hauling it away. The keyword rules never misfile a note that contains "blackberr", because that rule is checked first.
+
+The full disagreement list is in [`data/disagreements.csv`](data/disagreements.csv).
+
+```{r write-disagreements}
+disagree |>
+  select(id, description, true_label, keyword, llm, winner) |>
+  write_csv("data/disagreements.csv")
+```
+
+## Cost and latency
+
+```{r cost-table}
+tibble(
+  ` ` = c("Cost per 1,000 notes", "Median time per note", "90th percentile time per note",
+          "Tokens per call (in / out)", "Runs offline"),
+  `Keyword rules` = c("$0", paste0(floor(kw_us_per_row * 10) / 10, " µs"), "", "n/a", "Yes"),
+  LLM = c(sprintf("$%.2f", floor(llm_cost$cost_per_1k * 100) / 100),
+          paste0(floor(llm_cost$wall_median / 100) / 10, " s (API alone: ",
+                 floor(llm_cost$api_median / 100) / 10, " s)"),
+          paste0(floor(llm_cost$wall_p90 / 100) / 10, " s (API alone: ",
+                 floor(llm_cost$api_p90 / 100) / 10, " s)"),
+          paste0(floor(llm_cost$in_tok_mean), " / ", floor(llm_cost$out_tok_mean)),
+          "No")
+) |>
+  knitr::kable(align = "lrr")
+```
+
+LLM cost is the per-call figure the CLI reports at API prices, summed over `r llm_cost$calls` calls. Input tokens include context the CLI adds on top of my prompt, so a direct API call with the same prompt would send fewer tokens and cost less. Wall-clock time is for one CLI call with 4 calls running at once, including process start; "API alone" is the time the CLI reports waiting on the model. Keyword time is the R port, averaged over `r format(reps * nrow(d), big.mark = ",", scientific = FALSE)` classifications.
+
+## What I'd do with this
+
+- **For jobs logged from the picker,** the rules are the right tool: close to perfect, free and instant. The LLM is worse on these notes, mostly because of the blackberry mistake.
+- **For jobs typed by hand,** the rules misfile without any warning, and that skews the revenue-by-service and $/hour charts the app exists to produce. The cheapest fix is word boundaries (`\bmove\b`, `\bbeds?\b`), dropping place words from the rules, and a few synonyms.
+- **An LLM isn't a drop-in upgrade.** It was better overall but wrong in a consistent direction on the business's main service line. That's the kind of error that moves a revenue-by-service chart, and it only showed up because the results were checked against labels.
+- **The Hybrid** is what I'd ship: the rules handle what they're good at, and the LLM only sees the `r pct(hybrid_llm_share)` of notes the rules can't place. It still can't fix a note the rules misfile with a keyword match.
+
+## Limits
+
+- The notes are synthetic, so the accuracy numbers describe how each classifier handles this kind of variation, not how often that variation shows up in real job logs.
+- I wrote both the templates and the labels. The LLM was given the same category definitions I labeled with; the keyword rules were written earlier from real notes. The LLM has the easier job by design.
+- One model, one prompt, one run. No prompt tuning.
+
+## Reproduce
+
+Needs R (dplyr, tidyr, purrr, readr, stringr, ggplot2, scales, jsonlite, withr, knitr), Node.js for the port check, and a logged-in Claude Code CLI for the LLM step.
+
+```sh
+Rscript R/01_make_data.R     # write data/jobs.csv
+Rscript R/02_check_port.R    # R port vs the original JavaScript
+Rscript R/03_run_llm.R       # LLM labels, cached in data/llm_predictions.csv
+Rscript -e 'knitr::knit("README.Rmd")'
+```
+
+Step 3 is the only one that calls a model; the cached predictions are committed, so the README rebuilds without it.
